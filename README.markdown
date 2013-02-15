@@ -1,24 +1,24 @@
-MongoDB Jackson Mapper Play 2.0 Module
-======================================
+MongoJack Play 2.1 Module
+=========================
 
-This project provides a very simple plugin for Play 2.0 that allows easy access of mongo-jackson-mapper wrapped connections to MongoDB.  [MongoDB Jackson Mapper](http://vznet.github.com/mongo-jackson-mapper) is a lightweight POJO mapper that uses Jackson to serialise/deserialise MongoDB documents.  Because it uses Jackson, with bson4jackson to parse responses, it is fast, very flexible and performant.  It provides most of the same CRUB methods that the MongoDB Java driver provides, plus a more convenient query and updating interface.
+This project provides a very simple plugin for Play 2.1 that allows easy access of MongoJack wrapped connections to MongoDB.  [MongoJack](http://mongojack.org) is a lightweight POJO mapper that uses Jackson to serialise/deserialise MongoDB documents.  Because it uses Jackson, with bson4jackson to parse responses, it is fast, very flexible and performant.  It provides most of the same CRUD methods that the MongoDB Java driver provides, plus a more convenient query and updating interface.
 
 Mailing list
 ------------
 
-For any questions, please use the [MongoDB Jackson Mapper users mailing list](http://groups.google.com/group/mongo-jackson-mapper).
+For any questions, please use the [MongoJack users mailing list](http://groups.google.com/group/mongo-jackson-mapper).
 
 Installation
 ------------
 
 Add the following dependency to your dependencies:
 
-    "net.vz.mongodb.jackson" %% "play-mongo-jackson-mapper" % "1.0.0" 
+    "org.mongojack" %% "play-mongojack" % "2.0.0-RC1" 
 
 for example, in ``Build.scala``:
 
     val appDependencies = Seq(
-        "net.vz.mongodb.jackson" %% "play-mongo-jackson-mapper" % "1.0.0" 
+        "org.mongojack" %% "play-mongojack" % "2.0.0-RC1" 
     )
 
 Scala quick start
@@ -28,7 +28,7 @@ Scala quick start
     import reflect.BeanProperty
     import javax.persistence.Id
     import play.api.Play.current
-    import play.modules.mongodb.jackson.MongoDB
+    import play.modules.mongojack.MongoDB
     import scala.collection.JavaConversions._
 
     class BlogPost(@ObjectId @Id val id: String,
@@ -93,7 +93,7 @@ If you specify an object mapper configurer, it must be a class with a noarg cons
 Documentation
 -------------
 
-For documentation on how to use the Mongo Jackson Mapper itself, please visit the [Mongo Jackson Mapper site](http://vznet.github.com/mongo-jackson-mapper/).  In particular, the [tutorial](http://vznet.github.com/mongo-jackson-mapper/tutorial.html) might be a good place to start.
+For documentation on how to use MongoJack itself, please visit the [MongoJack site](http://mongojack.org).  In particular, the [tutorial](http://mongojack.org/tutorial.html) might be a good place to start.
 
 Features
 --------
