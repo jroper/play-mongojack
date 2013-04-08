@@ -65,17 +65,15 @@ Configuration
     mongodb.credentials="user:pass"
     # Configure the servers
     mongodb.servers=host1.example.com:27017,host2.example.com,host3.example.com:19999
-    # Configure a custom ObjectMapper to use
-    mongodb.objectMapperConfigurer=foo.bar.MyObjectMapperConfigurer
 
 The database name defaults to play.  The servers defaults to localhost.  Specifying a port number is optional, it defaults to the default MongoDB port.  If you specify one server, MongoDB will be used as a single server, if you specify multiple, it will be used as a replica set.
 
 Configuring the object mapper
 -----------------------------
 
-If you specify an object mapper configurer, it must be a class with a noarg constructor that implements the trait ``ObjectMapperConfigurer``.  This trait has two methods, one for configuring the global object mapper that will be used for all collections, and another for configuring object mappers per collection.  An example implementation might look like this:
+If you need to adjust Jackson's object mapper, you need to provide a class as a play-plugin that implements the trait ``ObjectMapperConfigurer``. This trait has two methods, one for configuring the global object mapper that will be used for all collections, and another for configuring object mappers per collection.  An example implementation might look like this:
 
-    class MyObjectMapperConfigurer extends ObjectMapperConfigurer {
+    class MyObjectMapperConfigurer(app: Application) extends Plugin with ObjectMapperConfigurer {
         def configure(defaultMapper: ObjectMapper) =
             defaultMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
@@ -89,6 +87,11 @@ If you specify an object mapper configurer, it must be a class with a noarg cons
             return globalMapper
         }
     }
+	
+To activate the configurer you need to add it to your ``conf/play.plugins`` file. An example might look like this:
+
+	1001:foo.bar.MyObjectMapperConfigurer
+	
 
 Documentation
 -------------
