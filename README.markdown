@@ -13,18 +13,18 @@ Installation
 
 Add the following dependency to your dependencies:
 
-    "org.mongojack" %% "play-mongojack" % "2.0.0-RC1" 
+    "org.mongojack" %% "play-mongojack" % "2.0.0-RC2" 
 
 for example, in ``Build.scala``:
 
     val appDependencies = Seq(
-        "org.mongojack" %% "play-mongojack" % "2.0.0-RC1" 
+        "org.mongojack" %% "play-mongojack" % "2.0.0-RC2" 
     )
 
 Scala quick start
 -----------------
 
-    import org.codehaus.jackson.annotate.JsonProperty
+    import com.fasterxml.jackson.annotate.JsonProperty
     import reflect.BeanProperty
     import javax.persistence.Id
     import play.api.Play.current

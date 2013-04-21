@@ -9,7 +9,7 @@ import java.lang.reflect.ParameterizedType
 import com.mongodb.{WriteConcern, Mongo, MongoURI, ServerAddress}
 import org.mongojack.{MongoCollection, JacksonDBCollection}
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.mongojack.internal.MongoJacksonMapperModule
+import org.mongojack.internal.MongoJackModule
 
 /**
  * MongoDB Jackson Mapper module for play framework
@@ -173,7 +173,7 @@ class MongoDBPlugin(val app: Application) extends Plugin {
     }
 
     // Configure the default object mapper
-    val defaultMapper = MongoJacksonMapperModule.configure(new ObjectMapper).registerModule(new DefaultScalaModule)
+    val defaultMapper = MongoJackModule.configure(new ObjectMapper).registerModule(new DefaultScalaModule)
 
     val globalMapper = configurer map {
       _.configure(defaultMapper)
