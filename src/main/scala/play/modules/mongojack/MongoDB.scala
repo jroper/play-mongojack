@@ -168,9 +168,10 @@ class MongoDBPlugin(val app: Application) extends Plugin {
   private lazy val (mongo, db, globalMapper, configurer) = {
 
     // Look up the object mapper configurer
-    val configurer = app.configuration.getString("mongodb.objectMapperConfigurer") map {
-      Class.forName(_).asSubclass(classOf[ObjectMapperConfigurer]).newInstance
-    }
+    val configurer = app.plugin[ObjectMapperConfigurer]
+//    val configurer = app.configuration.getString("mongodb.objectMapperConfigurer") map {
+//      Class.forName(_).asSubclass(classOf[ObjectMapperConfigurer]).newInstance
+//    }
 
     // Configure the default object mapper
     val defaultMapper = MongoJackModule.configure(new ObjectMapper).registerModule(new DefaultScalaModule)
