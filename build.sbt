@@ -42,6 +42,11 @@ pomIncludeRepository := { _ => false }
 
 publishArtifact in Test := false
 
+lazy val root = (project in file(".")).enablePlugins(PlayScala).settings(
+	sbt.Keys.fork in Test := false
+)
+
+
 pomExtra := (
   <url>http://github.com/jroper/play-mongojack</url>
   <inceptionYear>2012</inceptionYear>
